@@ -1,0 +1,27 @@
+{
+	"name": "@seregpie/vueasynccomputed",
+	"version": "18.7.5",
+	"description": "...",
+	"main": "VueAsyncComputed.js",
+	"scripts": {
+		"build": "rollup -c",
+		"prepublishOnly": "npm run build"
+	},
+	"repository": "https://github.com/SeregPie/VueAsyncComputed.git",
+	"keywords": [
+		"async",
+		"computed",
+		"vue"
+	],
+	"author": "Sergej Sintschilin <seregpie@gmail.com>",
+	"license": "MIT",
+	"dependencies": {
+		"vue": "^2.5.16"
+	},
+	"devDependencies": {
+		"@seregpie/rollup-plugin-resolve": "^18.6.13",
+		"rollup": "^0.62.0",
+		"rollup-plugin-buble": "^0.19.2",
+		"rollup-plugin-uglify": "^4.0.0"
+	}
+}
