@@ -1,5 +1,5 @@
-//import Function_cast from '/utils/Function/cast';
-import Function_constant from '/utils/Function/constant ';
+import Function_cast from '/utils/Function/cast';
+import Function_noop from '/utils/Function/noop';
 
 let prefix = 'asyncComputed_';
 let prefixPromise = prefix + 'promise_';
