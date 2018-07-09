@@ -1,6 +1,6 @@
 {
 	"name": "@seregpie/vueasynccomputed",
-	"version": "18.7.5",
+	"version": "18.7.9",
 	"description": "...",
 	"main": "VueAsyncComputed.js",
 	"scripts": {
