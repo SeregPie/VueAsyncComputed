@@ -7,9 +7,11 @@ let prefixTrigger = prefix + 'trigger_';
 
 export default {
 	install(Vue) {
-		Vue.config.optionMergeStrategies.asyncComputed = function(toValue, fromValue) {
-			return {...fromValue, ...toValue};
-		};
+		Object.assign(Vue.config.optionMergeStrategies, {
+			asyncComputed(toValue, fromValue) {
+				return {...fromValue, ...toValue};
+			},
+		});
 		Vue.mixin(this);
 	},
 
@@ -29,25 +31,29 @@ export default {
 				getDefaultValue = Function_cast(getDefaultValue);
 				let value;
 				let firstCall = true;
-				computed[prefixPromise + key] = function() {
-					if (firstCall) {
-						firstCall = false;
-						value = getDefaultValue.call(this);
-					}
-					Promise
-						.try(() => getValue.call(this))
-						.then(newValue => {
-							value = newValue;
-							this[prefixTrigger + key] = {};
-						})
-						.catch(errorHandler);
-				};
+				Object.assign(computed, {
+					[prefixPromise + key]() {
+						if (firstCall) {
+							firstCall = false;
+							value = getDefaultValue.call(this);
+						}
+						Promise
+							.try(() => getValue.call(this))
+							.then(newValue => {
+								value = newValue;
+								this[prefixTrigger + key] = {};
+							})
+							.catch(error => {
+								errorHandler.call(this, error);
+							});
+					},
+					[key]() {
+						this[prefixPromise + key];
+						this[prefixTrigger + key];
+						return value;
+					},
+				});
 				data[prefixTrigger + key] = {};
-				computed[key] = function() {
-					this[prefixPromise + key];
-					this[prefixTrigger + key];
-					return value;
-				};
 			});
 		}
 		return data;
