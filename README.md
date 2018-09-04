@@ -1,6 +1,6 @@
 # VueAsyncComputed
 
-...
+Async computed properties.
 
 ## demo
 

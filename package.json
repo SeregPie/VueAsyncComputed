@@ -1,7 +1,7 @@
 {
 	"name": "@seregpie/vueasynccomputed",
 	"version": "18.7.9",
-	"description": "...",
+	"description": "Async computed properties.",
 	"main": "VueAsyncComputed.js",
 	"scripts": {
 		"build": "rollup -c",
