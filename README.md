@@ -31,14 +31,14 @@ Vue.use(VueAsyncComputed);
 
 *or*
 
-Register the plugin in the scope of another instance.
+Register the plugin in the scope of a component.
 
 ```javascript
 import VueAsyncComputed from '@seregpie/vueasynccomputed';
 
 export default {
-  // ...
   mixins: [VueAsyncComputed],
+  // ...
 };
 ```
 
