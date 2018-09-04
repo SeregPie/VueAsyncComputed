@@ -53,4 +53,21 @@ If Vue is detected, the plugin will be installed automatically.
 
 ## usage
 
-...
+```javascript
+{
+  props: {
+    itemId: Number,
+  },
+  asyncComputed: {
+    item: {
+      get() {
+        return axios.get(`/api/items/${this.itemId}`);
+      },
+      default: null,
+      errorHandler(error) {
+        this.displayErrorMessage(error.message);
+      },
+    },
+  },
+}
+```
